@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .photo{
+    width: 40%;
+    height: 50%;
+    padding: 1%;
+    }
+.register{
+  width: 100%;
+  margin: 0 auto;
+}
+.reg{
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #ebeeef;
+}
+</style>
+<title>Редактирование профиля</title>
+    <div style="background: #ebeeef;">
+<h1>Обновление профиля</h1>
+<p>Что бы изменить данные нужно:</p>
+<p>1. Заполнить поля, которые Вы хотите изменить</p>
+<p>2. Ввести старый пароль </p>
+<p>3. Нажать кнопку 'Изменить'</p>
+        <div class="register">
+    <div class="reg">
+            <img class='photo' src='static/img/register.jpg'>
+    <form action="" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+            {{ form.email.label }}<br>
+            {{ form.email(class="form-control", type="email", placeholder="Email") }}<br>
+                {% for error in form.email.errors %}
+                    <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                    </div>
+                {% endfor %}
+            {{ form.password.label }}<br>
+{{ form.password(class="form-control", type="password", placeholder="Старый пароль") }}<br>
+                {% for error in form.password.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            {{ form.password_new.label }}<br>
+{{ form.password_new(class="form-control", type="password", placeholder="Новый пароль") }}<br>
+                {% for error in form.password_new.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            {{ form.telephone.label }}<br>
+            {{ form.telephone(class="form-control", type="string", placeholder="Телефон") }}<br>
+                {% for error in form.telephone.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+        <p>{{ form.submit(type="submit", class="btn btn-success") }}</p>
+        <div>{{ message }}</div>
+    </form>
+    </div>
+        </div>
+    </div>
+{% endblock %}

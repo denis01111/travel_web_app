@@ -1,0 +1,28 @@
+.photo{
+    width: 40%;
+    height: 50%;
+    padding: 1%;
+    }
+.register{
+  width: 20%;
+  margin: 10 auto;
+}
+.reg{
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #ebeeef;
+}
+.form-register{
+    width: 200px;
+    height: 50px;
+    border: 1px solid #008;
+}

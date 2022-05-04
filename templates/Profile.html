@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+.login{
+  width: 50%;
+  margin: 0 auto;
+}
+.product p {
+	position: relative;
+	margin: 0;
+	padding: 10px;
+}
+</style>
+<title>Профиль</title>
+<div class="login">
+    <div style="background: #ebeeef;">
+        <div class="product">
+                <img style="padding: 10px; width: 150px; height: 150px;" src={{user.img}}><br>
+            <p>Имя - {{user.name}}</p>
+    {% if user.telephone %}
+        <p>Телефон - {{user.telephone}}</p>
+    {% else %}
+        <p>Телефон не указан</p>
+    {% endif%}
+            <p>Почта - {{user.email}}</p>
+            <p>Зарегистрирован с {{user.created_date}}</p>
+            <p><a href='/profile_update' class="btn btn-success">Изменить данные</a></p>
+        </div>
+        </div>
+    </div>
+{% endblock %}

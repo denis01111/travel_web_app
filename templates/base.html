@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="shortcut icon" href="static/img/plane.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <title>{{ title }}</title>
+    {% if current_user.is_authenticated %}
+        <ul class="fail">
+          <li class="fall">
+              <img class='icon' src="static/img/plane.png"><img src="static/img/image.png"></li>
+          <li class="fall"><a href="/">
+              <img class='photos' src="static/img/menu.png"> ГЛАВНАЯ</a></li>
+          <li class="fall"><a href="/about_me">
+              <img class='exit' src="static/img/message.png"> ОБО МНЕ</a></li>
+          <li class="fall" style="float:right"><a class="btn btn-success" href="/exit">
+              <img class='exit' src="static/img/exit.png">ВЫЙТИ</a></li>
+          <li class="fall" style="float:right"><a href="/profile">
+              <img class='photos' src="static/img/contact.png"> МОЙ ПРОФИЛЬ</a></li>
+        </ul>
+    {% endif %}
+    {% if not current_user.is_authenticated %}
+        <ul class="fail">
+          <li class="fall">
+              <img class='icon' src="static/img/plane.png"><img src="static/img/image.png"></li>
+          <li class="fall"><a href="/">
+              <img class='photos' src="static/img/menu.png">ГЛАВНАЯ</a></li>
+          <li class="fall"><a href="/about_me">
+              <img class='exit' src="static/img/message.png">ОБО МНЕ</a></li>
+          <li class="fall" style="float:right">
+              <a href="/register"><img class="exit" src="static/img/add_persons.png">РЕГИСТРАЦИЯ</a></li>
+          <li class="fall" style="float:right"><a href="/login">
+              <img class="exit" src="static/img/logins.png">АВТОРИЗАЦИЯ</a></li>
+        </ul>
+    {% endif %}
+
+</head>
+<style>
+.icon{
+margin-top: 3%
+}
+.photos{
+margin-top: -10%;
+}
+.places_photos{
+width: 50%;
+height: 50%;
+}
+.exit{
+margin-top: -4%;
+}
+ul.fail {
+    list-style-type: none;
+    margin-left: 2%;
+    padding: 0;
+    overflow: hidden;
+}
+li.fall {
+    float: left;
+}
+li.fall a{
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  float: left;
+  background-color: transparent;
+  display: inline-block;
+  width: 210px;
+  height: 60px;
+  padding: 20px;
+  color: #000000;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+}
+li.fall a:hover:not(.active) {
+    background-color: #d2d7d3;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-image: url('static/img/font.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.name{
+color: blue;
+}
+.menu{
+    border-radius: 20px;
+	width: 20%;
+	padding: 7%;
+}
+ul{
+	margin: 0 0 0 0;
+	padding: 0px;
+}
+
+ul li{
+	list-style:none;
+}
+
+ul li a{
+	background: #1C1E1F;
+	color: #ccc;
+	border-bottom: 1px solid #111;
+	display :block;
+	width: 180px;
+	padding: 10px;
+	text-decoration: none;
+}
+.info{
+    font-size:15px;
+    color: black;
+    text-align: left;
+    margin: 5%
+}
+</style>
+<body>
+<div align="center">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

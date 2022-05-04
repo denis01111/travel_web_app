@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>Авторизация</title>
+
+<style>
+.photo{
+    width: 40%;
+    height: 50%;
+    margin: 5% 5% 1% 5%;
+}
+.fon{
+    background-color: #fffafa;
+    margin: 5% 25% 5% 25%;
+    border-radius: 20px;
+}
+</style>
+<body>
+<div class="fon">
+    <img class='photo' src='static/img/login.jpg'>
+    <form class="login_css" action="" method="post">
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+            {{ form.email.label }}<br>
+            {{ form.email(class="form-control", type="email", placeholder="Email", style="width: 200px; height: 50px; border: 1px solid #008;") }}<br>
+            {% for error in form.email.errors %}
+                <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                </div>
+            {% endfor %}
+            {{ form.password.label }}<br>
+            {{ form.password(class="form-control", type="password", placeholder="Password", style="width: 200px; height: 50px; border: 1px solid #008;") }}<br>
+            {% for error in form.password.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit(type="submit", style="margin: 0 0 2% 0;") }}</p>
+        <div>{{ message }}</div>
+    </form>
+        </div>
+</body>
+{% endblock %}
